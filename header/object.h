@@ -24,11 +24,12 @@ typedef struct s_camera
 {
     t_point orig;
     t_vec dir;
-    t_vec right_normal;
-    t_vec up_normal;
+    double viewport_width;
+    double viewport_height;
     t_point left_bottom;
     double fov;
     double focal_len;
+     t_vec horizontal, vertical;
 } t_camera;
 
 typedef struct s_light

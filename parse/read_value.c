@@ -34,7 +34,7 @@ t_scene *object_parsing(t_scene *scene, char *str)
     else if(ft_strncmp(split[0],"cy",2) == 0)
         add_object(&(scene->object),new_object(CYLINDER, parse_cylinder(split)));
     else
-        exit(0);
+        printf_error("invalid object");
     free_split(split);
     return scene;
 }
@@ -44,9 +44,7 @@ t_scene *read_value(char **argv)
     t_scene *scene;
     char *str;
     int fd;
-    int i;
 
-    i = 0;
     fd = -1;
     if(ft_strlen(argv[1]) > 3 &&
         ft_strncmp(argv[1] + ft_strlen(argv[1]) -3,".rt",3) == 0)

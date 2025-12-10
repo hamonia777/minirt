@@ -17,6 +17,7 @@ SRCS        = main.c \
               test_print.c \
 			  event.c \
 			  init.c \
+			  vec_util.c \
               parse/read_value.c \
               parse/parse.c \
               parse/parse_util.c \

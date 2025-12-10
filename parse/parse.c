@@ -1,4 +1,6 @@
 #include "../header/object.h"
+#include "../header/vector.h"
+#include <math.h>
 
 t_ambient   parse_ambient(char **split)
 {
@@ -13,11 +15,24 @@ t_ambient   parse_ambient(char **split)
 t_camera   parse_camera(char **split)
 {
     t_camera camera;
+    double theta;
+    double aspect_ratio;
+
     if(split_count(split) != 4)
         printf_error("Error: Missing data in CAMERA\n");    
     camera.orig = parse_vec(split[1]);
     camera.dir = parse_unit_vec(split[2]);
     camera.fov = parse_double(split[3]);
+    
+    camera.focal_len = 1.0;
+    aspect_ratio = 16.0 / 9.0; 
+    theta = camera.fov * M_PI / 180.0;
+    double h = tan(theta / 2.0);
+    
+    camera.viewport_height = 2.0 * h;
+    camera.viewport_width = camera.viewport_height * aspect_ratio;
+    camera.left_bottom = vec(0,0,0); 
+    
     return camera;
 }
 

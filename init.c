@@ -7,7 +7,7 @@ t_vars vars_init()
     vars.scene = NULL;
     vars.width = 400;
     vars.aspect_ratio = 9.0/16.0;
-    vars.height = vars.width * vars.aspect_ratio;  
+    vars.height = 300;  
     vars.mlx = mlx_init();
     vars.win = mlx_new_window(vars.mlx, vars.width, vars.height, "miniRT");
     vars.image.img = mlx_new_image(vars.mlx, vars.width, vars.height);
