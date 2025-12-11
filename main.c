@@ -92,10 +92,8 @@ void	render_scene(t_vars *vars)
 		{
 			u = (double)j / (vars->width - 1);
     		v = (double)i / (vars->height - 1); 
-			write(1,"1",1);
 			ray = new_ray(vars->scene->camera, u, v);
 			// color = ray_color(vars, ray);
-			write(1,"2",1);			
 			my_mlx_pixel_put(&vars->image, j, i, ray_color(vars, ray));
 			j++;
 		}
