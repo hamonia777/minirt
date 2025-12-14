@@ -4,6 +4,7 @@
 t_object *new_object(t_object_type type, void *elements)
 {
     t_object *obj;
+    t_color albedo;
 
     obj = (t_object *)malloc(sizeof(t_object));
     if(!obj)
@@ -11,6 +12,30 @@ t_object *new_object(t_object_type type, void *elements)
     obj->next = NULL;
     obj->elements = elements;
     obj->type = type;
+    
+    // 물체 색상을 albedo로 설정 (0-1 범위로 정규화)
+    if (type == SPHERE)
+    {
+        t_sphere *sp = (t_sphere *)elements;
+        albedo = vdivide(sp->color, 255.0);
+    }
+    else if (type == PLANE)
+    {
+        t_plane *pl = (t_plane *)elements;
+        albedo = vdivide(pl->color, 255.0);
+    }
+    else if (type == CYLINDER)
+    {
+        t_cylinder *cy = (t_cylinder *)elements;
+        albedo = vdivide(cy->color, 255.0);
+    }
+    else
+    {
+        // 기본값 (흰색)
+        albedo = color3(1.0, 1.0, 1.0);
+    }
+    
+    obj->albedo = albedo;
     return obj;
 }
 

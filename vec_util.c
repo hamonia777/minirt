@@ -1,51 +1,129 @@
 #include "header/vector.h"
 
-t_vec vec(double x,double y, double z)
+// 벡터3 생성자
+t_vec vec3(double x, double y, double z)
 {
     t_vec vec;
 
     vec.x = x;
     vec.y = y;
     vec.z = z;
+    return (vec);
+}
+
+// 포인트3 생성자
+t_point point3(double x, double y, double z)
+{
+    t_point point;
+
+    point.x = x;
+    point.y = y;
+    point.z = z;
+    return (point);
+}
+
+// 색상3 생성자
+t_point color3(double r, double g, double b)
+{
+    t_color color;
+
+    color.x = r;
+    color.y = g;
+    color.z = b;
+    return (color);
+}
+
+// 벡터 값 설정
+void vset(t_vec *vec, double x, double y, double z)
+{
+    vec->x = x;
+    vec->y = y;
+    vec->z = z;
+}
+
+// 벡터 길이 제곱
+double vlength2(t_vec vec)
+{
+    return (vec.x * vec.x + vec.y * vec.y + vec.z * vec.z);
+}
+
+// 벡터 길이
+double vlength(t_vec vec)
+{
+    return (sqrt(vlength2(vec)));
+}
+
+// 벡터합
+t_vec vplus(t_vec vec, t_vec vec2)
+{
+    vec.x += vec2.x;
+    vec.y += vec2.y;
+    vec.z += vec2.z;
+    return (vec);
+}
+
+// 벡터합2
+t_vec vplus_(t_vec vec, double x, double y, double z)
+{
+    vec.x += x;
+    vec.y += y;
+    vec.z += z;
+    return (vec);
+}
+
+// 벡터차
+t_vec vminus(t_vec vec, t_vec vec2)
+{
+    vec.x -= vec2.x;
+    vec.y -= vec2.y;
+    vec.z -= vec2.z;
+    return (vec);
+}
+
+t_vec vminus_(t_vec vec, double x, double y, double z)
+{
+    vec.x -= x;
+    vec.y -= y;
+    vec.z -= z;
+    return (vec);
+}
+
+// 벡터 * 스칼라 곱연산
+t_vec vmult(t_vec vec, double t)
+{
+    vec.x *= t;
+    vec.y *= t;
+    vec.z *= t;
+    return (vec);
+}
+
+// 벡터 축 값끼리 곱연산
+t_vec vmult_(t_vec vec, t_vec vec2)
+{
+    vec.x *= vec2.x;
+    vec.y *= vec2.y;
+    vec.z *= vec2.z;
+    return (vec);
+}
+
+// 벡터 스칼라 나누기
+t_vec vdivide(t_vec vec, double t)
+{
+    vec.x *= 1 / t;
+    vec.y *= 1 / t;
+    vec.z *= 1 / t;
+
     return vec;
 }
 
-t_vec vplus(t_vec v1, t_vec v2)
-{
-    t_vec vec;
-
-    vec.x = v1.x + v2.x;
-    vec.y = v1.y + v2.y;
-    vec.z = v1.z + v2.z;
-    return vec;
-}
-
-t_vec vminus(t_vec v1, t_vec v2)
-{
-    t_vec vec;
-    
-    vec.x = v1.x - v2.x;
-    vec.y = v1.y - v2.y;
-    vec.z = v1.z - v2.z;
-    return vec;
-}
-
-t_vec vmult(t_vec vec, double i)
-{
-    t_vec new_vec;
-
-    new_vec.x = vec.x * i;
-    new_vec.y = vec.y * i;
-    new_vec.z = vec.z * i;
-    return new_vec;
-}
-
-double      vdot(t_vec vec, t_vec vec2)
+// 벡터 내적
+double vdot(t_vec vec, t_vec vec2)
 {
     return (vec.x * vec2.x + vec.y * vec2.y + vec.z * vec2.z);
 }
 
-t_vec      vcross(t_vec vec, t_vec vec2)
+// 벡터 외적
+t_vec vcross(t_vec vec, t_vec vec2)
 {
     t_vec new;
 
@@ -55,7 +133,8 @@ t_vec      vcross(t_vec vec, t_vec vec2)
     return (new);
 }
 
-t_vec      vunit(t_vec vec)
+// 단위 벡터
+t_vec vunit(t_vec vec)
 {
     double len = vlength(vec);
     if (len == 0)
@@ -69,12 +148,14 @@ t_vec      vunit(t_vec vec)
     return (vec);
 }
 
-double      vlength2(t_vec vec)
+// 두 벡터의 원소를 비교하여 작은 값들만 반환
+t_vec vmin(t_vec vec1, t_vec vec2)
 {
-    return (vec.x * vec.x + vec.y * vec.y + vec.z * vec.z);
-}
-
-double      vlength(t_vec vec)
-{
-    return (sqrt(vlength2(vec)));
+    if (vec1.x > vec2.x)
+        vec1.x = vec2.x;
+    if (vec1.y > vec2.y)
+        vec1.y = vec2.y;
+    if (vec1.z > vec2.z)
+        vec1.z = vec2.z;
+    return (vec1);
 }

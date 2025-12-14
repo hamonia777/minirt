@@ -14,15 +14,23 @@ typedef struct s_vec
 typedef t_vec t_point;
 typedef t_vec t_color;
 
-t_vec vec(double x, double y, double z);
-t_vec vplus(t_vec v1, t_vec v2);
-t_vec vminus(t_vec v1, t_vec v2);
-t_vec vmult(t_vec vec, double i);
-t_vec      vcross(t_vec vec, t_vec vec2);
-t_vec      vunit(t_vec vec);
-double      vlength2(t_vec vec);
-double      vlength(t_vec vec);
-double      vdot(t_vec vec, t_vec vec2);
+t_vec vec3(double x, double y, double z);
+t_point point3(double x, double y, double z);
+t_point color3(double r, double g, double b);
+void vset(t_vec *vec, double x, double y, double z);
+double vlength2(t_vec vec);
+double vlength(t_vec vec);
+t_vec vplus(t_vec vec, t_vec vec2);
+t_vec vplus_(t_vec vec, double x, double y, double z);
+t_vec vminus(t_vec vec, t_vec vec2);
+t_vec vminus_(t_vec vec, double x, double y, double z);
+t_vec vmult(t_vec vec, double t);
+t_vec vmult_(t_vec vec, t_vec vec2);
+t_vec vdivide(t_vec vec, double t);
+double vdot(t_vec vec, t_vec vec2);
+t_vec vcross(t_vec vec, t_vec vec2);
+t_vec vunit(t_vec vec);
+t_vec vmin(t_vec vec1, t_vec vec2);
 
 
 #endif

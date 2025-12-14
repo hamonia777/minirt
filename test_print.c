@@ -36,7 +36,7 @@ void print_scene(t_scene *scene)
             t_sphere *sp = (t_sphere *)current->elements;
             printf("SPHERE\n");
             print_vec("\tCenter", sp->center);
-            printf("\tDiameter: %.2f\n", sp->diameter);
+            printf("\tDiameter: %.2f\n", sp->radius);
             print_vec("\tColor", sp->color);
         }
         else if (current->type == PLANE)

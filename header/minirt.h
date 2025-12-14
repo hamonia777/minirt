@@ -27,4 +27,6 @@ void print_vec(char *name, t_vec vec);
 void print_scene(t_scene *scene);
 int	key_hook(int keycode, t_vars *vars);
 t_vars vars_init();
+void	render_scene(t_vars *vars);
+void print_vec(char *name, t_vec vec);
 #endif

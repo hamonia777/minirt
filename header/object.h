@@ -6,6 +6,18 @@
 #include <stdlib.h>
 #include "../libft/libft.h"
 
+typedef int t_bool;
+typedef struct s_object t_object;
+typedef struct s_hit_record t_hit_record;
+
+#define FALSE 0
+#define TRUE 1
+#define FALSE 0
+#define TRUE 1
+#define LIGHT_POINT 1
+#define EPSILON 1e-6 // 0.000001
+#define LUMEN 3      // 이 값을 조절해 장면의 밝기를 조절할 수 있다.
+
 typedef enum s_object_type
 {
     PLANE,
@@ -13,23 +25,32 @@ typedef enum s_object_type
     SPHERE
 } t_object_type;
 
+typedef struct s_ray
+{
+    t_point orig;
+    t_vec dir;
+} t_ray;
+
 typedef struct s_object
 {
     t_object_type type;
     void *elements;
     struct s_object *next;
+    t_color albedo;
+
 } t_object;
 
 typedef struct s_camera
 {
     t_point orig;
     t_vec dir;
-    double viewport_width;
-    double viewport_height;
-    t_point left_bottom;
     double fov;
+    double viewport_h;
+    double viewport_w;
+    t_vec horizontal;
+    t_vec vertical;
     double focal_len;
-     t_vec horizontal, vertical;
+    t_point left_bottom;
 } t_camera;
 
 typedef struct s_light
@@ -64,9 +85,21 @@ typedef struct s_cylinder
 typedef struct s_sphere
 {
     t_point center;
-    double diameter;
+    double radius;
+    double radius2; 
     t_color color;
 } t_sphere;
+
+struct s_hit_record
+{
+    t_point p;    // 교점의 좌표
+    t_vec normal; // 교점에서의 법선
+    double tmin;
+    double tmax;
+    double t; // 광선의 원점과 교점 사이의 거리
+    t_bool front_face;
+    t_color albedo;
+};
 
 typedef struct s_scene
 {
@@ -74,6 +107,8 @@ typedef struct s_scene
     t_light light;
     t_ambient ambient;
     t_object *object;
+    t_ray ray;
+    t_hit_record rec;
 } t_scene;
 
 t_vec parse_vec(char *str);

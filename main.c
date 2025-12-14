@@ -1,10 +1,11 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <stdio.h>
-#include "header/object.h"
 #include "header/minirt.h"
+#include "header/trace.h"
 #include "minilibx-linux/mlx.h"
 #include <math.h>
+#include "header/event.h"
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
 	char	*dst;
@@ -13,93 +14,36 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	*(unsigned int*)dst = color;
 }
 
-typedef struct s_ray
+int create_trgb(int t, int r, int g, int b)
 {
-	t_point orig;
-	t_vec dir;
-} t_ray;
-
-t_ray new_ray(t_camera camera, double u, double v)
-{
-	t_ray ray;
-	t_vec tmp;
-
-	ray.orig = camera.orig;
-	tmp = vplus(camera.left_bottom, vec(camera.viewport_width * u, camera.viewport_height * v, 0));
-	ray.dir = vminus(tmp,ray.orig);
-	ray.dir = vunit(ray.dir);
-	return ray;
+    return (t << 24 | r << 16 | g << 8 | b);
 }
 
-int hit_sphere(t_ray ray, t_sphere *sp)
-{
-    t_vec oc;
-    double a, half_b, c, discriminant, t;
-    
-    oc = vminus(ray.orig, sp->center);
-    a = vlength2(ray.dir);
-    half_b = vdot(ray.dir, oc);
-    c = vlength2(oc) - (sp->diameter/2.0) * (sp->diameter/2.0);
-    discriminant = half_b * half_b - a * c;
-    if (discriminant < 0)
-        return 0;
-    t = (-half_b - sqrt(discriminant)) / a;
-    if (t > 0)
-        return 1;
-    
-    return 0;
-}
 
-int ray_color(t_vars *vars, t_ray ray)
+void render_scene(t_vars *vars)
 {
-    t_object *obj; 
-    int obj_count = 0;
+    int i, j;
+    double u, v;
+    t_color pixel_color;
+    int color;
 
-    obj = vars->scene->object;
-    
-    while (obj)
+    i = 0;
+    while (i < vars->height)
     {
-        obj_count++;
-        if (obj->type == SPHERE)
+        j = 0;
+        while (j < vars->width)
         {
-            if (obj->elements != NULL)
-            {
-                if(hit_sphere(ray, (t_sphere *)obj->elements))
-                    return 0xEC0BEE;					
-            }
+            u = (double)j / (vars->width - 1);
+            v = (double)(vars->height - 1 - i) / (vars->height - 1);
+            vars->scene->ray = ray_primary(&vars->scene->camera, u, v);
+            pixel_color = ray_color(vars->scene);
+            color = create_trgb(255, pixel_color.x * 255.99, pixel_color.y * 255.999, pixel_color.z * 255.999);
+            my_mlx_pixel_put(&vars->image, j, i, color);
+            j++;
         }
-        
-        obj = obj->next;
+        i++;
     }
-    
-    return 0x000000;
-}
-
-void	render_scene(t_vars *vars)
-{
-	int	i;
-    int	j;
-	t_ray ray;
-	double u;
-    double v;
-	// t_color color;
-
-	i = 0;
-	while (i < vars->height)
-	{
-		j = 0;
-		while (j < vars->width)
-		{
-			u = (double)j / (vars->width - 1);
-    		v = (double)i / (vars->height - 1); 
-			ray = new_ray(vars->scene->camera, u, v);
-			// color = ray_color(vars, ray);
-			my_mlx_pixel_put(&vars->image, j, i, ray_color(vars, ray));
-			j++;
-		}
-		i++;
-	}
-	mlx_put_image_to_window(vars->mlx, vars->win, vars->image.img, 0, 0);
+    mlx_put_image_to_window(vars->mlx, vars->win, vars->image.img, 0, 0);
 }
 
 int main(int argc,char **argv)
@@ -112,10 +56,10 @@ int main(int argc,char **argv)
 	{
         printf_error("Parsing Failed or Scene is NULL\n");
 	}
-	render_scene(&vars); // 점 찍기
-    mlx_key_hook(vars.win, key_hook, &vars); // 일단 esc만 구현
-    mlx_loop(vars.mlx);    
     // print_scene(vars.scene); //파싱한 값 보는거
-
+	render_scene(&vars); // 점 찍기
+    mlx_key_hook(vars.win, key_hook, &vars);
+    mlx_mouse_hook(vars.win,mouse_hook,&vars);
+    mlx_loop(vars.mlx);    
 	return 0;
 }

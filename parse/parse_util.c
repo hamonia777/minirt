@@ -49,10 +49,6 @@ t_color parse_color(char *split)
     color_xyz.y = parse_double(color[1]);
     color_xyz.z = parse_double(color[2]);
     free_split(color);
-    if (color_xyz.x < 0 || color_xyz.x > 255 ||
-        color_xyz.y < 0 || color_xyz.y > 255 ||
-        color_xyz.z < 0 || color_xyz.z > 255 )
-        printf_error("value out of range (0~255)");
     return color_xyz;
 }
 
