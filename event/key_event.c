@@ -64,15 +64,7 @@ int	key_hook(int keycode, t_vars *vars)
 	else if (keycode == KEY_W)
 		vars->scene->camera = move_camera(vars->scene->camera,0.0,0.0,3.0);
 	else if (keycode == KEY_S)
-		vars->scene->camera = move_camera(vars->scene->camera,0.0,0.0,-3.0);	
-	else if (keycode == KEY_UP)
-		vars->scene->camera = rotation_x(vars->scene->camera,5);		
-	else if (keycode == KEY_DOWN)
-		vars->scene->camera = rotation_x(vars->scene->camera,-5);		
-	else if (keycode == KEY_LEFT)
-		vars->scene->camera = rotation_y(vars->scene->camera,5);		
-	else if (keycode == KEY_RIGHT)
-		vars->scene->camera = rotation_y(vars->scene->camera,-5);							
+		vars->scene->camera = move_camera(vars->scene->camera,0.0,0.0,-3.0);						
 	render_scene(vars);
 	return (0);
 }

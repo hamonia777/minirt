@@ -59,7 +59,9 @@ int main(int argc,char **argv)
     // print_scene(vars.scene); //파싱한 값 보는거
 	render_scene(&vars); // 점 찍기
     mlx_key_hook(vars.win, key_hook, &vars);
-    mlx_mouse_hook(vars.win,mouse_hook,&vars);
+    mlx_hook(vars.win, 4, 1L<<2, mouse_down, &vars);
+    mlx_hook(vars.win, 5, 1L<<3, mouse_up, &vars);
+    mlx_hook(vars.win, 6, 1L<<6, mouse_move, &vars);    
     mlx_loop(vars.mlx);    
 	return 0;
 }
