@@ -13,7 +13,6 @@ t_object *new_object(t_object_type type, void *elements)
     obj->elements = elements;
     obj->type = type;
     
-    // 물체 색상을 albedo로 설정 (0-1 범위로 정규화)
     if (type == SPHERE)
     {
         t_sphere *sp = (t_sphere *)elements;
@@ -31,7 +30,6 @@ t_object *new_object(t_object_type type, void *elements)
     }
     else
     {
-        // 기본값 (흰색)
         albedo = color3(1.0, 1.0, 1.0);
     }
     
