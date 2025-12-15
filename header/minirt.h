@@ -24,7 +24,6 @@ typedef struct s_vars
     int x;
     int y;
     int is_drag;
-    int sensitivity;
 } t_vars;
 
 void print_vec(char *name, t_vec vec);

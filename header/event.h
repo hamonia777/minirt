@@ -14,9 +14,7 @@
 #define KEY_RIGHT 65363
 #define KEY_UP 65362
 #define KEY_DOWN 65364
-#define MOUSE_DOWN 1
-#define MOUSE_UP 2
-#define MOUSE_MOVE 3
+#define LEFT_MOUSE 1
 #include "object.h"
 #include "minirt.h"
 

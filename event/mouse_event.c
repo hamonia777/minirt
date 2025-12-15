@@ -7,12 +7,11 @@ int mouse_down(int button, int x, int y, t_vars *vars)
 {
     double zoom;
 
-    if (button == 1) 
+    if (button == LEFT_MOUSE) 
     {
         vars->x = x;
         vars->y = y;        
         vars->is_drag = 1;
-        vars->sensitivity = 0;
     }
     zoom = vars->scene->camera.orig.z;
     if (button == ZOOM_IN)
@@ -32,40 +31,42 @@ int mouse_down(int button, int x, int y, t_vars *vars)
 
 int mouse_up(int button, int x, int y, t_vars *vars)
 {
-    if (button == 1)
+    if (button == LEFT_MOUSE)
     {
         vars->is_drag = 0;
-        vars->sensitivity = 0;
     }
     return (0);
 }
 int mouse_move(int x, int y, t_vars *vars)
 {
-    if (vars->is_drag == 1 && vars->sensitivity == 5)
+    int dx;
+    int dy;
+    int camera_changed;
+
+    if(vars->is_drag != 1)
+        return 0;
+    dx = x - vars->x;
+    dy = y - vars->y;
+    camera_changed = 0;
+    if(abs(dx) >= 3)
     {
-        if(vars->x - x > 0)
-        {
-            vars->x = x;
-            vars->scene->camera = rotation_y(vars->scene->camera,1);		
-        }
-        if(vars->x - x < 0)
-        {
-            vars->x = x;
-    		vars->scene->camera = rotation_y(vars->scene->camera,-1);
-        }        
-        if(vars->y - y < 0) 
-        {
-            vars->y = y;
-            vars->scene->camera = rotation_x(vars->scene->camera,1);
-        }
-        else if(vars->y - y > 0)
-        {
-            vars->y = y;     
-    		vars->scene->camera = rotation_x(vars->scene->camera,-1);		            
-        }
-        vars->sensitivity = 0;
+        if(dx > 0)
+            vars->scene->camera = rotation_y(vars->scene->camera,-0.5);		
+        else
+            vars->scene->camera = rotation_y(vars->scene->camera,0.5);
+        camera_changed = 1;
+        vars->x = x;
     }
-    vars->sensitivity++;    
-    render_scene(vars);
+    if(abs(dy) >= 3)
+    {
+        if(dy > 0)
+            vars->scene->camera = rotation_x(vars->scene->camera,0.5);		
+        else
+            vars->scene->camera = rotation_x(vars->scene->camera,-0.5);
+        camera_changed = 1;
+        vars->y = y;
+    }
+    if(camera_changed)
+        render_scene(vars);
     return (0);
 }
