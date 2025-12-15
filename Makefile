@@ -19,6 +19,7 @@ SRCS        = main.c \
 			  test_print.c \
 			  hit/normal.c \
 			  hit/hit_sphere.c \
+			  hit/hit_plane.c \
 			  hit/hit.c \
 			  ray/phong_lighting.c \
 			  ray/ray.c \

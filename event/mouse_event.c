@@ -3,6 +3,14 @@
 #include "../header/event.h"
 #include <math.h>
 
+int ft_abs(int n)
+{
+    if (n > 0)
+        return n;
+    else
+        return n * (-1);
+}
+
 int mouse_down(int button, int x, int y, t_vars *vars)
 {
     double zoom;
@@ -48,7 +56,7 @@ int mouse_move(int x, int y, t_vars *vars)
     dx = x - vars->x;
     dy = y - vars->y;
     camera_changed = 0;
-    if(abs(dx) >= 3)
+    if(ft_abs(dx) >= 3)
     {
         if(dx > 0)
             vars->scene->camera = rotation_y(vars->scene->camera,-0.5);		
@@ -57,7 +65,7 @@ int mouse_move(int x, int y, t_vars *vars)
         camera_changed = 1;
         vars->x = x;
     }
-    if(abs(dy) >= 3)
+    if(ft_abs(dy) >= 3)
     {
         if(dy > 0)
             vars->scene->camera = rotation_x(vars->scene->camera,0.5);		

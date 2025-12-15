@@ -31,17 +31,3 @@ t_camera	rotation_y(t_camera camera, double theta)
 	camera = update_camera(camera);
 	return camera;
 }
-
-void	rotation_z(t_vec *pos, double theta)
-{
-	double	radian;
-	int		temp_x;
-	int		temp_y;
-
-	radian = theta * M_PI / 180;
-	temp_x = pos->x;
-	temp_y = pos->y;
-	pos->x = (temp_x * cos(radian) - temp_y * sin(radian));
-	pos->y = (temp_x * sin(radian) + temp_y * cos(radian));
-	pos->z = pos->z;
-}
