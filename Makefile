@@ -16,7 +16,6 @@ RM          = rm -f
 SRCS        = main.c \
 			  init.c \
 			  vec_util.c \
-			  test_print.c \
 			  hit/normal.c \
 			  hit/hit_sphere.c \
 			  hit/hit_plane.c \
@@ -28,6 +27,7 @@ SRCS        = main.c \
 			  ray/ray.c \
               parse/read_value.c \
               parse/parse.c \
+              parse/parse_shape.c \
               parse/parse_util.c \
               parse/object_list.c \
               parse/check_value.c \
