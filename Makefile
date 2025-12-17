@@ -20,6 +20,7 @@ SRCS        = main.c \
 			  hit/normal.c \
 			  hit/hit_sphere.c \
 			  hit/hit_plane.c \
+			  hit/hit_cylinder.c \
 			  hit/hit.c \
 			  ray/phong_lighting.c \
 			  ray/ray.c \

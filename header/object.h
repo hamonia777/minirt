@@ -73,22 +73,24 @@ typedef struct s_plane
     t_color color;
 } t_plane;
 
-typedef struct s_cylinder
-{
-    t_point center;
-    t_vec axis;
-    double diameter;
-    double height;
-    t_color color;
-} t_cylinder;
-
 typedef struct s_sphere
 {
     t_point center;
     double radius;
-    double radius2; 
+    double radius2;
     t_color color;
 } t_sphere;
+
+typedef struct s_cylinder
+{
+    t_point center;
+    t_vec n;
+    double diameter;
+    double radius;
+    double radius2;
+    double height;
+    t_color color;
+} t_cylinder;
 
 struct s_hit_record
 {
@@ -113,15 +115,15 @@ typedef struct s_scene
 
 t_vec parse_vec(char *str);
 t_color parse_color(char *split);
-double  ft_atod(char *str);
-void	free_split(char **split);
+double ft_atod(char *str);
+void free_split(char **split);
 t_scene *read_value(char **argv);
-t_ambient   parse_ambient(char **split);
-t_camera   parse_camera(char **split);
-t_light   parse_light(char **split);
-t_sphere   *parse_sphere(char **split);
-t_plane   *parse_plane(char **split);
-t_cylinder   *parse_cylinder(char **split);
+t_ambient parse_ambient(char **split);
+t_camera parse_camera(char **split);
+t_light parse_light(char **split);
+t_sphere *parse_sphere(char **split);
+t_plane *parse_plane(char **split);
+t_cylinder *parse_cylinder(char **split);
 t_object *new_object(t_object_type type, void *elements);
 void add_object(t_object **obj, t_object *new_obj);
 t_vec parse_unit_vec(char *split);

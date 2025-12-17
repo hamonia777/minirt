@@ -52,8 +52,8 @@ void print_scene(t_scene *scene)
             t_cylinder *cy = (t_cylinder *)current->elements;
             printf("CYLINDER\n");
             print_vec("\tCenter", cy->center);
-            print_vec("\tAxis", cy->axis);
-            printf("\tDiameter: %.2f, Height: %.2f\n", cy->diameter, cy->height);
+            print_vec("\tAxis", cy->n);
+            // printf("\tDiameter: %.2f, Height: %.2f\n", cy->diameter, cy->height);
             print_vec("\tColor", cy->color);
         }
         current = current->next;
