@@ -60,7 +60,11 @@ int	key_hook(int keycode, t_vars *vars)
 {
 	if (keycode == KEY_ESC)
 	{
+		mlx_destroy_image(vars->mlx, vars->image.img);
 		mlx_destroy_window(vars->mlx, vars->win);
+		mlx_destroy_display(vars->mlx);
+		free(vars->mlx);
+		free_scene(vars->scene);
 		exit(0);
 	}
 	else if (keycode == KEY_A)

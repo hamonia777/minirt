@@ -80,3 +80,32 @@ void	add_object(t_object **obj, t_object *new_obj)
 	last = object_last(*obj);
 	last->next = new_obj;
 }
+
+void	free_element(t_object *obj)
+{
+	if (!obj || !obj->elements)
+		return ;
+	free(obj->elements);
+	obj->elements = NULL;
+}
+
+void	free_object_list(t_object *obj)
+{
+	t_object	*next;
+
+	while (obj)
+	{
+		next = obj->next;
+		free_element(obj);
+		free(obj);
+		obj = next;
+	}
+}
+
+void	free_scene(t_scene *scene)
+{
+	if (!scene)
+		return ;
+	free_object_list(scene->object);
+	free(scene);
+}

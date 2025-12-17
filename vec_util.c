@@ -136,8 +136,10 @@ t_vec vcross(t_vec vec, t_vec vec2)
 // 단위 벡터
 t_vec vunit(t_vec vec)
 {
-    double len = vlength(vec);
-    if (len == 0)
+	double	len;
+
+	len = vlength(vec);
+	if (len == 0)
     {
         printf("Error\n:Devider is 0");
         exit(0);

@@ -130,4 +130,7 @@ t_vec parse_unit_vec(char *split);
 void printf_error(char *msg);
 int split_count(char **split);
 double parse_double(char *str);
+void	free_element(t_object *obj);
+void	free_object_list(t_object *obj);
+void	free_scene(t_scene *scene);
 #endif
