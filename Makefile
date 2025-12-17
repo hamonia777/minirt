@@ -21,6 +21,8 @@ SRCS        = main.c \
 			  hit/hit_sphere.c \
 			  hit/hit_plane.c \
 			  hit/hit_cylinder.c \
+			  hit/hit_cylinder/cylinder.c \
+			  hit/hit_cylinder/cap.c \
 			  hit/hit.c \
 			  ray/phong_lighting.c \
 			  ray/ray.c \
