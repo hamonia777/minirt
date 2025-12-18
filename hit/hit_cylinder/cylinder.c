@@ -25,6 +25,7 @@ t_bool check_cylinder_root(t_root_check data)
     t_cylinder *cy;
     double h;
     t_point p;
+    t_vec axis_point;
 
     cy = data.cy_obj->elements;
     if (data.root < data.rec->tmin || data.root > data.rec->tmax)
@@ -38,8 +39,9 @@ t_bool check_cylinder_root(t_root_check data)
 
     data.rec->t = data.root;
     data.rec->p = p;
-        data.rec->normal = vdivide(vminus(vminus(p, cy->center), vmult(cy->n, h)), cy->radius);
-    set_face_normal(data.ray, data.rec);
+    axis_point = vplus(cy->center, vmult(cy->n, h));
+    // 법선 = 축에서 표면까지의 벡터를 정규화
+    data.rec->normal = vunit(vminus(p, axis_point));    set_face_normal(data.ray, data.rec);
     data.rec->albedo = data.cy_obj->albedo;
     data.rec->tmax = data.rec->t;
     return (TRUE);
