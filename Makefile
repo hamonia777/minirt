@@ -15,7 +15,9 @@ RM          = rm -f
 
 SRCS        = main.c \
 			  init.c \
-			  vec_util.c \
+			  vector/vec_util1.c \
+			  vector/vec_util2.c \
+			  vector/vec_util3.c \
 			  hit/normal.c \
 			  hit/hit_sphere.c \
 			  hit/hit_plane.c \
