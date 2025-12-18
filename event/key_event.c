@@ -6,7 +6,7 @@
 /*   By: jinwpark <jinwpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 16:27:04 by jinwpark          #+#    #+#             */
-/*   Updated: 2025/12/17 16:30:33 by jinwpark         ###   ########.fr       */
+/*   Updated: 2025/12/18 14:05:07 by jinwpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,5 +76,16 @@ int	key_hook(int keycode, t_vars *vars)
 	else if (keycode == KEY_S)
 		vars->scene->camera = move_camera(vars->scene->camera, 0.0, 0.0, -3.0);
 	render_scene(vars);
+	return (0);
+}
+
+int	close_window(t_vars *vars)
+{
+	mlx_destroy_image(vars->mlx, vars->image.img);
+	mlx_destroy_window(vars->mlx, vars->win);
+	mlx_destroy_display(vars->mlx);
+	free(vars->mlx);
+	free_scene(vars->scene);
+	exit(0);
 	return (0);
 }

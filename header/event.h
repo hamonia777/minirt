@@ -25,5 +25,5 @@ t_camera	rotation_y(t_camera camera, double theta);
 int mouse_move(int x, int y, t_vars *vars);
 int mouse_up(int button, int x, int y, t_vars *vars);
 int mouse_down(int button, int x, int y, t_vars *vars);
-
+int close_window(t_vars *vars);
 #endif

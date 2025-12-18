@@ -6,7 +6,7 @@
 /*   By: jinwpark <jinwpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 17:34:09 by jinwpark          #+#    #+#             */
-/*   Updated: 2025/12/17 17:36:53 by jinwpark         ###   ########.fr       */
+/*   Updated: 2025/12/18 13:59:34 by jinwpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ int	main(int argc, char **argv)
 	mlx_hook(vars.win, 4, 1L << 2, mouse_down, &vars);
 	mlx_hook(vars.win, 5, 1L << 3, mouse_up, &vars);
 	mlx_hook(vars.win, 6, 1L << 6, mouse_move, &vars);
+	mlx_hook(vars.win, 17, 1L << 0, close_window, &vars);
 	mlx_loop(vars.mlx);
 	return (0);
 }
