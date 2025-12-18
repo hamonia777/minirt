@@ -125,6 +125,30 @@ typedef struct s_scene
 	t_hit_record			rec;
 }							t_scene;
 
+typedef struct s_coeff
+{
+	double			a;
+	double			half_b;
+	double			c;
+}					t_coeff;
+
+typedef struct s_root_check
+{
+	t_object		*cy_obj;
+	t_ray			*ray;
+	t_hit_record	*rec;
+	double			root;
+}					t_root_check;
+
+typedef struct s_root_calc
+{
+	t_object	*cy_obj;
+	t_ray		*ray;
+	t_hit_record	*rec;
+	t_coeff		coeff;
+} t_root_calc;
+
+
 t_vec						parse_vec(char *str);
 t_color						parse_color(char *split);
 double						ft_atod(char *str);
