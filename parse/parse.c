@@ -6,7 +6,7 @@
 /*   By: jinwpark <jinwpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 16:47:13 by jinwpark          #+#    #+#             */
-/*   Updated: 2025/12/17 17:28:13 by jinwpark         ###   ########.fr       */
+/*   Updated: 2025/12/18 15:13:06 by jinwpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,10 @@ t_camera	parse_camera(char **split)
 	camera.viewport_h = 2.0 * tan((camera.fov * M_PI / 180.0) / 2.0);
 	camera.viewport_w = camera.viewport_h * (4.0 / 3.0);
 	camera.focal_len = 1.0;
-	vup = vec3(0, 1, 0);
+	if(camera.dir.y == 1.0 || camera.dir.y == -1.0)
+		vup = vec3(0, 0, 1);
+	else
+		vup = vec3(0, 1, 0);
 	w = vunit(vmult(camera.dir, -1));
 	u = vunit(vcross(vup, w));
 	v = vcross(w, u);
