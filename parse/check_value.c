@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_value.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jinwpark <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jinwpark <jinwpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 16:46:44 by jinwpark          #+#    #+#             */
-/*   Updated: 2025/12/17 16:46:54 by jinwpark         ###   ########.fr       */
+/*   Updated: 2025/12/21 01:11:02 by jinwpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,10 @@ int	split_count(char **split)
 
 void	printf_error(char *msg)
 {
+	// if(!scene)
+	// 	printf("%s", msg);
+	// free_scene(scene);
+	// free_object_list(scene->object);
 	printf("%s", msg);
 	exit(1);
 }

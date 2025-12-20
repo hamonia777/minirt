@@ -6,7 +6,7 @@
 /*   By: jinwpark <jinwpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 16:47:13 by jinwpark          #+#    #+#             */
-/*   Updated: 2025/12/18 15:13:06 by jinwpark         ###   ########.fr       */
+/*   Updated: 2025/12/21 01:10:39 by jinwpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_ambient	parse_ambient(char **split)
 	t_ambient	ambient;
 
 	if (split_count(split) != 3)
-		printf_error("Error: Missing data in AMBIENT\n");
+		printf_error("Missing data in AMBIENT\n");
 	ambient.ambient = parse_double(split[1]);
 	ambient.color = vdivide(parse_color(split[2]), 255.0);
 	return (ambient);
@@ -34,7 +34,7 @@ t_camera	parse_camera(char **split)
 	t_vec		v;
 
 	if (split_count(split) != 4)
-		printf_error("Error: Missing data in CAMERA\n");
+		printf_error("Missing data in CAMERA\n");
 	camera.orig = parse_vec(split[1]);
 	camera.dir = vunit(parse_unit_vec(split[2]));
 	camera.fov = parse_double(split[3]);
@@ -61,7 +61,7 @@ t_light	parse_light(char **split)
 	t_light	light;
 
 	if (split_count(split) != 4)
-		printf_error("Error: Missing data in LIGHT\n");
+		printf_error("Missing data in LIGHT\n");
 	light.orig = parse_vec(split[1]);
 	light.brightness = parse_double(split[2]);
 	light.color = vdivide(parse_color(split[3]), 255.0);

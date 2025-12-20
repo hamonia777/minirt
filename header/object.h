@@ -6,7 +6,7 @@
 /*   By: jinwpark <jinwpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/18 14:16:50 by jinwpark          #+#    #+#             */
-/*   Updated: 2025/12/18 15:29:53 by jinwpark         ###   ########.fr       */
+/*   Updated: 2025/12/21 01:11:24 by jinwpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,9 @@ typedef struct s_scene
 	t_object				*object;
 	t_ray					ray;
 	t_hit_record			rec;
+	int cam_count;
+	int amb_count;
+	int light_count;
 }							t_scene;
 
 typedef struct s_coeff
@@ -163,7 +166,7 @@ t_cylinder					*parse_cylinder(char **split);
 t_object					*new_object(t_object_type type, void *elements);
 void						add_object(t_object **obj, t_object *new_obj);
 t_vec						parse_unit_vec(char *split);
-void						printf_error(char *msg);
+void	printf_error(char *msg);
 int							split_count(char **split);
 double						parse_double(char *str);
 void						free_element(t_object *obj);
