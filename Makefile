@@ -31,7 +31,9 @@ SRCS        = main.c \
               parse/parse.c \
               parse/parse_shape.c \
               parse/parse_util.c \
+              parse/read_util.c \
               parse/object_list.c \
+              parse/free_object.c \
               parse/check_value.c \
               readline/cm_readline.c \
               readline/cm_readline_utils.c \

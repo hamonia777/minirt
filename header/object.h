@@ -6,7 +6,7 @@
 /*   By: jinwpark <jinwpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/18 14:16:50 by jinwpark          #+#    #+#             */
-/*   Updated: 2025/12/21 01:11:24 by jinwpark         ###   ########.fr       */
+/*   Updated: 2025/12/21 02:22:59 by jinwpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,24 +152,29 @@ typedef struct s_root_calc
 } t_root_calc;
 
 
-t_vec						parse_vec(char *str);
-t_color						parse_color(char *split);
+t_vec	parse_vec(char *str, t_scene *scene);
+t_color	parse_color(char *split, t_scene *scene);
 double						ft_atod(char *str);
 void						free_split(char **split);
 t_scene						*read_value(char **argv);
-t_ambient					parse_ambient(char **split);
-t_camera					parse_camera(char **split);
-t_light						parse_light(char **split);
-t_sphere					*parse_sphere(char **split);
-t_plane						*parse_plane(char **split);
-t_cylinder					*parse_cylinder(char **split);
+t_ambient	parse_ambient(char **split, t_scene *scene);
+t_camera	parse_camera(char **split, t_scene *scene);
+t_light	parse_light(char **split, t_scene *scene);
+t_sphere	*parse_sphere(char **split, t_scene *scene);
+t_plane	*parse_plane(char **split, t_scene *scene);
+t_cylinder	*parse_cylinder(char **split, t_scene *scene);
 t_object					*new_object(t_object_type type, void *elements);
 void						add_object(t_object **obj, t_object *new_obj);
-t_vec						parse_unit_vec(char *split);
-void	printf_error(char *msg);
+t_vec	parse_unit_vec(char *str, t_scene *scene);
+void	printf_error(char *msg, t_scene *scene);
 int							split_count(char **split);
-double						parse_double(char *str);
+double	parse_double(char *str, t_scene *scene);
 void						free_element(t_object *obj);
 void						free_object_list(t_object *obj);
 void						free_scene(t_scene *scene);
+t_scene	*scene_init(void);
+int	ft_isspace(int c);
+int	open_file(char **argv);
+int	check_object(t_scene *scene, char *str);
+
 #endif

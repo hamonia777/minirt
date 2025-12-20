@@ -6,7 +6,7 @@
 /*   By: jinwpark <jinwpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 16:47:01 by jinwpark          #+#    #+#             */
-/*   Updated: 2025/12/17 17:25:48 by jinwpark         ###   ########.fr       */
+/*   Updated: 2025/12/21 02:30:32 by jinwpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,33 +79,4 @@ void	add_object(t_object **obj, t_object *new_obj)
 	}
 	last = object_last(*obj);
 	last->next = new_obj;
-}
-
-void	free_element(t_object *obj)
-{
-	if (!obj || !obj->elements)
-		return ;
-	free(obj->elements);
-	obj->elements = NULL;
-}
-
-void	free_object_list(t_object *obj)
-{
-	t_object	*next;
-
-	while (obj)
-	{
-		next = obj->next;
-		free_element(obj);
-		free(obj);
-		obj = next;
-	}
-}
-
-void	free_scene(t_scene *scene)
-{
-	if (!scene)
-		return ;
-	free_object_list(scene->object);
-	free(scene);
 }

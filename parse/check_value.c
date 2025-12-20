@@ -6,7 +6,7 @@
 /*   By: jinwpark <jinwpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 16:46:44 by jinwpark          #+#    #+#             */
-/*   Updated: 2025/12/21 01:11:02 by jinwpark         ###   ########.fr       */
+/*   Updated: 2025/12/21 02:13:39 by jinwpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,11 @@ int	split_count(char **split)
 	return (i);
 }
 
-void	printf_error(char *msg)
+void	printf_error(char *msg, t_scene *scene)
 {
-	// if(!scene)
-	// 	printf("%s", msg);
-	// free_scene(scene);
-	// free_object_list(scene->object);
-	printf("%s", msg);
+	printf("Error %s\n", msg);
+	if (scene)
+		free_scene(scene);
 	exit(1);
 }
 
@@ -64,12 +62,9 @@ int	is_valid_double(char *str)
 	return (1);
 }
 
-double	parse_double(char *str)
+double	parse_double(char *str, t_scene *scene)
 {
 	if (!is_valid_double(str))
-	{
-		printf("Error: Invalid number format: %s\n", str);
-		exit(1);
-	}
+		printf_error("Error: Invalid number format", scene);
 	return (ft_atod(str));
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_shape.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jinwpark <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jinwpark <jinwpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 17:27:58 by jinwpark          #+#    #+#             */
-/*   Updated: 2025/12/17 17:28:00 by jinwpark         ###   ########.fr       */
+/*   Updated: 2025/12/21 02:24:23 by jinwpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,52 +14,70 @@
 #include "../header/vector.h"
 #include <math.h>
 
-t_sphere	*parse_sphere(char **split)
+t_sphere	*parse_sphere(char **split, t_scene *scene)
 {
 	t_sphere	*sphere;
 
 	if (split_count(split) != 4)
-		printf_error("Error: Missing data in SPHERE\n");
+	{
+		free_split(split);
+		printf_error("Error: Missing data in SPHERE", scene);
+	}
 	sphere = (t_sphere *)malloc(sizeof(t_sphere));
 	if (!sphere)
-		exit(1);
-	sphere->center = parse_vec(split[1]);
-	sphere->radius = parse_double(split[2]) / 2;
+	{
+		free_split(split);
+		printf_error("malloc fail", scene);
+	}
+	sphere->center = parse_vec(split[1], scene);
+	sphere->radius = parse_double(split[2], scene) / 2;
 	sphere->radius2 = sphere->radius * sphere->radius;
-	sphere->color = parse_color(split[3]);
+	sphere->color = parse_color(split[3], scene);
 	return (sphere);
 }
 
-t_plane	*parse_plane(char **split)
+t_plane	*parse_plane(char **split, t_scene *scene)
 {
 	t_plane	*plane;
 
+	if (split_count(split) != 4)
+	{
+		free_split(split);
+		printf_error("Error: Missing data in PLANE", scene);
+	}
 	plane = (t_plane *)malloc(sizeof(t_plane));
 	if (!plane)
-		exit(1);
-	if (split_count(split) != 4)
-		printf_error("Error: Missing data in PLANE\n");
-	plane->center = parse_vec(split[1]);
-	plane->normal = parse_unit_vec(split[2]);
-	plane->color = parse_color(split[3]);
+	{
+		free_split(split);
+		printf_error("malloc fail", scene);
+	}
+	plane->center = parse_vec(split[1], scene);
+	plane->normal = parse_unit_vec(split[2], scene);
+	plane->color = parse_color(split[3], scene);
 	return (plane);
 }
 
-t_cylinder	*parse_cylinder(char **split)
+t_cylinder	*parse_cylinder(char **split, t_scene *scene)
 {
 	t_cylinder	*cylinder;
 
+	if (split_count(split) != 6)
+	{
+		free_split(split);
+		printf_error("Error: Missing data in CYLINDER", scene);
+	}
 	cylinder = (t_cylinder *)malloc(sizeof(t_cylinder));
 	if (!cylinder)
-		exit(1);
-	if (split_count(split) != 6)
-		printf_error("Error: Missing data in CYLINDER\n");
-	cylinder->center = parse_vec(split[1]);
-	cylinder->n = parse_unit_vec(split[2]);
-	cylinder->diameter = parse_double(split[3]);
+	{
+		free_split(split);
+		printf_error("malloc fail", scene);
+	}
+	cylinder->center = parse_vec(split[1], scene);
+	cylinder->n = parse_unit_vec(split[2], scene);
+	cylinder->diameter = parse_double(split[3], scene);
 	cylinder->radius = cylinder->diameter / 2;
 	cylinder->radius2 = cylinder->diameter * cylinder->diameter;
-	cylinder->height = parse_double(split[4]);
-	cylinder->color = parse_color(split[5]);
+	cylinder->height = parse_double(split[4], scene);
+	cylinder->color = parse_color(split[5], scene);
 	return (cylinder);
 }

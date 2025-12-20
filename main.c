@@ -6,7 +6,7 @@
 /*   By: jinwpark <jinwpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 17:34:09 by jinwpark          #+#    #+#             */
-/*   Updated: 2025/12/18 13:59:34 by jinwpark         ###   ########.fr       */
+/*   Updated: 2025/12/21 01:22:16 by jinwpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ int	main(int argc, char **argv)
 		vars.scene = read_value(argv);
 	else
 	{
-		printf_error("Parsing Failed or Scene is NULL\n");
+		printf_error("Parsing Failed or Scene is NULL", vars.scene);
 	}
 	render_scene(&vars);
 	mlx_key_hook(vars.win, key_hook, &vars);
