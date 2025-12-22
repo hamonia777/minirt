@@ -6,7 +6,7 @@
 /*   By: skang <skang@student.42gyeongsan.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 16:36:19 by skang             #+#    #+#             */
-/*   Updated: 2025/12/22 16:37:52 by skang            ###   ########.fr       */
+/*   Updated: 2025/12/22 16:48:51 by skang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 t_color	ray_color(t_scene *scene)
 {
-	double t;
+	double	t;
 
 	scene->rec = record_init();
 	if (hit(scene->object, &scene->ray, &scene->rec))
