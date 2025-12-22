@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_util.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jinwpark <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: skang <skang@student.42gyeongsan.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 02:24:33 by jinwpark          #+#    #+#             */
-/*   Updated: 2025/12/21 02:24:35 by jinwpark         ###   ########.fr       */
+/*   Updated: 2025/12/22 17:05:29 by skang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	open_file(char **argv)
 	return (fd);
 }
 
-int	check_object(t_scene *scene, char *str)
+int	check_object(char *str)
 {
 	while (ft_isspace(*str))
 		str++;

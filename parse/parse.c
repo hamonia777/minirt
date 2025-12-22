@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jinwpark <jinwpark@student.42.fr>          +#+  +:+       +#+        */
+/*   By: skang <skang@student.42gyeongsan.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 16:47:13 by jinwpark          #+#    #+#             */
-/*   Updated: 2025/12/21 02:24:02 by jinwpark         ###   ########.fr       */
+/*   Updated: 2025/12/22 17:05:03 by skang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,15 +48,11 @@ static void	init_camera_vectors(t_camera *camera, t_vec *vup)
 
 static void	calc_camera_viewport(t_camera *camera)
 {
-	t_vec	temp1;
-	t_vec	temp2;
-
-	camera->left_bottom = vminus(camera->orig,
-			vdivide(camera->horizontal, 2));
-	camera->left_bottom = vminus(camera->left_bottom,
-			vdivide(camera->vertical, 2));
-	camera->left_bottom = vminus(camera->left_bottom,
-			vmult(camera->dir, camera->focal_len));
+	camera->left_bottom = vminus(camera->orig, vdivide(camera->horizontal, 2));
+	camera->left_bottom = vminus(camera->left_bottom, vdivide(camera->vertical,
+				2));
+	camera->left_bottom = vminus(camera->left_bottom, vmult(camera->dir,
+				camera->focal_len));
 }
 
 t_camera	parse_camera(char **split, t_scene *scene)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mouse_event.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jinwpark <jinwpark@student.42.fr>          +#+  +:+       +#+        */
+/*   By: skang <skang@student.42gyeongsan.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 16:31:11 by jinwpark          #+#    #+#             */
-/*   Updated: 2025/12/17 16:45:35 by jinwpark         ###   ########.fr       */
+/*   Updated: 2025/12/22 17:12:20 by skang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ int	mouse_down(int button, int x, int y, t_vars *vars)
 
 int	mouse_up(int button, int x, int y, t_vars *vars)
 {
+	(void)x;
+	(void)y;
 	if (button == LEFT_MOUSE)
 	{
 		vars->is_drag = 0;

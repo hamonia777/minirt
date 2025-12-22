@@ -6,7 +6,7 @@
 /*   By: skang <skang@student.42gyeongsan.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/18 14:16:50 by jinwpark          #+#    #+#             */
-/*   Updated: 2025/12/22 16:37:36 by skang            ###   ########.fr       */
+/*   Updated: 2025/12/22 17:06:03 by skang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -206,6 +206,6 @@ void						free_scene(t_scene *scene);
 t_scene						*scene_init(void);
 int							ft_isspace(int c);
 int							open_file(char **argv);
-int							check_object(t_scene *scene, char *str);
+int							check_object(char *str);
 
 #endif

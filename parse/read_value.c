@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_value.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jinwpark <jinwpark@student.42.fr>          +#+  +:+       +#+        */
+/*   By: skang <skang@student.42gyeongsan.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 16:47:59 by jinwpark          #+#    #+#             */
-/*   Updated: 2025/12/21 02:22:49 by jinwpark         ###   ########.fr       */
+/*   Updated: 2025/12/22 17:05:58 by skang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,14 +42,14 @@ static void	parse_element(t_scene *scene, char **split)
 	else if (ft_strncmp(split[0], "L", 1) == 0)
 		scene->light = parse_light(split, scene);
 	else if (ft_strncmp(split[0], "sp", 2) == 0)
-		add_object(&(scene->object), new_object(SPHERE,
-				parse_sphere(split, scene)));
+		add_object(&(scene->object), new_object(SPHERE, parse_sphere(split,
+					scene)));
 	else if (ft_strncmp(split[0], "pl", 2) == 0)
-		add_object(&(scene->object), new_object(PLANE,
-				parse_plane(split, scene)));
+		add_object(&(scene->object), new_object(PLANE, parse_plane(split,
+					scene)));
 	else if (ft_strncmp(split[0], "cy", 2) == 0)
-		add_object(&(scene->object), new_object(CYLINDER,
-				parse_cylinder(split, scene)));
+		add_object(&(scene->object), new_object(CYLINDER, parse_cylinder(split,
+					scene)));
 }
 
 t_scene	*object_parsing(t_scene *scene, char *str)
@@ -71,7 +71,7 @@ t_scene	*object_parsing(t_scene *scene, char *str)
 
 static void	process_line(t_scene **scene, char *str)
 {
-	if (check_object(*scene, str))
+	if (check_object(str))
 	{
 		free(str);
 		printf_error("invalid value", *scene);

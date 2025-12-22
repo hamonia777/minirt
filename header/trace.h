@@ -6,7 +6,7 @@
 /*   By: skang <skang@student.42gyeongsan.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/18 14:16:58 by jinwpark          #+#    #+#             */
-/*   Updated: 2025/12/22 16:44:47 by skang            ###   ########.fr       */
+/*   Updated: 2025/12/22 17:04:50 by skang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ t_bool				hit(t_object *obj, t_ray *ray, t_hit_record *rec);
 t_bool				hit_obj(t_object *obj, t_ray *ray, t_hit_record *rec);
 t_bool				hit_sphere(t_object *obj, t_ray *ray, t_hit_record *rec);
 t_bool				hit_plane(t_object *pl_obj, t_ray *ray, t_hit_record *rec);
+t_bool				hit_cylinder(t_object *obj, t_ray *ray, t_hit_record *rec);
 void				set_face_normal(t_ray *r, t_hit_record *rec);
 t_color				phong_lighting(t_scene *scene);
 

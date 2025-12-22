@@ -4,7 +4,7 @@ LIBRARY_DIR = ./minilibx-linux
 LIBFT_DIR   = ./libft
 
 CC          = cc
-# CFLAGS      = -Wall -Wextra -Werror
+CFLAGS      = -Wall -Wextra -Werror
 
 INCLUDES    = -I. -I./libft -I$(LIBRARY_DIR)
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   object_list.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jinwpark <jinwpark@student.42.fr>          +#+  +:+       +#+        */
+/*   By: skang <skang@student.42gyeongsan.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 16:47:01 by jinwpark          #+#    #+#             */
-/*   Updated: 2025/12/21 02:30:32 by jinwpark         ###   ########.fr       */
+/*   Updated: 2025/12/22 17:06:19 by skang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,6 @@ t_color	decision_albedo(t_object *obj, t_object_type type)
 t_object	*new_object(t_object_type type, void *elements)
 {
 	t_object	*obj;
-	t_sphere	*sp;
-	t_plane		*pl;
-	t_cylinder	*cy;
 
 	obj = (t_object *)malloc(sizeof(t_object));
 	if (!obj)

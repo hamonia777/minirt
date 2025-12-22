@@ -6,7 +6,7 @@
 /*   By: skang <skang@student.42gyeongsan.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 16:58:22 by skang             #+#    #+#             */
-/*   Updated: 2025/12/22 17:02:14 by skang            ###   ########.fr       */
+/*   Updated: 2025/12/22 17:07:00 by skang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ static char	*split_stash_by_newline(char **stash)
 	return (result);
 }
 
-static char	*cm_read_line(int fd, char *stash, ssize_t *buffer_read)
+static char	*cm_read_line(int fd, char *stash, size_t *buffer_read)
 {
 	char	*buffer;
 	char	*temp_stash;
