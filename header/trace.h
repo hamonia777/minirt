@@ -16,6 +16,7 @@
 # include "object.h"
 # include "vector.h"
 
+t_hit_record	record_init(void);
 t_ray	ray(t_point orig, t_vec dir);
 t_point	ray_at(t_ray *ray, double t);
 t_ray	ray_primary(t_camera *cam, double u, double v);
