@@ -26,6 +26,7 @@ SRCS        = main.c \
 			  hit/hit_cylinder/cap.c \
 			  hit/hit.c \
 			  ray/phong_lighting.c \
+			  ray/lighting_utils.c \
 			  ray/ray_utils.c \
 			  ray/ray_color.c \
               parse/read_value.c \
