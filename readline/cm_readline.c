@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cm_readline.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: skang <skang@student.42gyeongsan.kr>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/12/22 16:58:22 by skang             #+#    #+#             */
+/*   Updated: 2025/12/22 17:02:14 by skang            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cm_readline.h"
 
 static char	*cm_substr(char const *s, unsigned int start, size_t len)
@@ -97,7 +109,7 @@ static char	*cm_read_line(int fd, char *stash, ssize_t *buffer_read)
 char	*cm_readline(int fd)
 {
 	static char	*stash;
-	ssize_t		buffer_read;
+	size_t		buffer_read;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
