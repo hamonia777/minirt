@@ -6,14 +6,12 @@
 /*   By: skang <skang@student.42gyeongsan.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/18 14:16:50 by jinwpark          #+#    #+#             */
-/*   Updated: 2025/12/24 12:34:28 by skang            ###   ########.fr       */
+/*   Updated: 2025/12/24 12:40:12 by skang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef OBJECT_H
 # define OBJECT_H
-
-# define ASPECT_RATIO 4.0 / 3.0
 
 # include "../libft/libft.h"
 # include "vector.h"
@@ -26,8 +24,8 @@ typedef struct s_hit_record	t_hit_record;
 
 # define FALSE 0
 # define TRUE 1
-# define FALSE 0
-# define TRUE 1
+# define ASPECT_W 4.0
+# define ASPECT_H 3.0
 # define LIGHT_POINT 1
 # define EPSILON 1e-6
 # define LUMEN 3
