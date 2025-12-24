@@ -6,12 +6,14 @@
 /*   By: skang <skang@student.42gyeongsan.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/18 14:16:50 by jinwpark          #+#    #+#             */
-/*   Updated: 2025/12/22 17:06:03 by skang            ###   ########.fr       */
+/*   Updated: 2025/12/24 12:34:28 by skang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef OBJECT_H
 # define OBJECT_H
+
+# define ASPECT_RATIO 4.0 / 3.0
 
 # include "../libft/libft.h"
 # include "vector.h"

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jinwpark <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: skang <skang@student.42gyeongsan.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 17:28:34 by jinwpark          #+#    #+#             */
-/*   Updated: 2025/12/17 17:28:38 by jinwpark         ###   ########.fr       */
+/*   Updated: 2025/12/24 12:34:49 by skang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_vars	vars_init(void)
 
 	vars.scene = NULL;
 	vars.width = 400;
-	vars.aspect_ratio = 4.0 / 3.0;
+	vars.aspect_ratio = ASPECT_RATIO;
 	vars.height = 300;
 	vars.mlx = mlx_init();
 	vars.win = mlx_new_window(vars.mlx, vars.width, vars.height, "miniRT");

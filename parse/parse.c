@@ -6,7 +6,7 @@
 /*   By: skang <skang@student.42gyeongsan.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 16:47:13 by jinwpark          #+#    #+#             */
-/*   Updated: 2025/12/22 17:05:03 by skang            ###   ########.fr       */
+/*   Updated: 2025/12/24 12:34:41 by skang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ t_camera	parse_camera(char **split, t_scene *scene)
 	camera.dir = vunit(parse_unit_vec(split[2], scene));
 	camera.fov = parse_double(split[3], scene);
 	camera.viewport_h = 2.0 * tan((camera.fov * M_PI / 180.0) / 2.0);
-	camera.viewport_w = camera.viewport_h * (4.0 / 3.0);
+	camera.viewport_w = camera.viewport_h * (ASPECT_RATIO);
 	camera.focal_len = 1.0;
 	init_camera_vectors(&camera, &vup);
 	calc_camera_viewport(&camera);
