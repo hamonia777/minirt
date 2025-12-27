@@ -52,7 +52,7 @@ static void	parse_element(t_scene *scene, char **split)
 					scene)));
 }
 
-t_scene	*object_parsing(t_scene *scene, char *str)
+static t_scene	*object_parsing(t_scene *scene, char *str)
 {
 	char	**split;
 

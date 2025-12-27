@@ -22,7 +22,7 @@ typedef struct s_cap_data
 }			t_cap_data;
 
 // 교점이 뚜껑 원판 안에 있는지 확인
-t_bool	is_point_on_cap(t_cylinder *cy, t_point p, t_vec center)
+static t_bool	is_point_on_cap(t_cylinder *cy, t_point p, t_vec center)
 {
 	t_vec	cp;
 
@@ -31,7 +31,8 @@ t_bool	is_point_on_cap(t_cylinder *cy, t_point p, t_vec center)
 }
 
 // 광선과 평면의 교점 거리 계산
-double	calculate_cap_intersection(t_ray *ray, t_vec center, t_vec normal)
+static double	calculate_cap_intersection(t_ray *ray, t_vec center,
+					t_vec normal)
 {
 	double	denom;
 	double	t;
@@ -43,7 +44,8 @@ double	calculate_cap_intersection(t_ray *ray, t_vec center, t_vec normal)
 	return (t);
 }
 
-t_bool	hit_cap(t_object *cy_obj, t_ray *ray, t_hit_record *rec, t_cap_data cap)
+static t_bool	hit_cap(t_object *cy_obj, t_ray *ray, t_hit_record *rec,
+					t_cap_data cap)
 {
 	t_cylinder	*cy;
 	double		t;

@@ -33,7 +33,7 @@ void	printf_error(char *msg, t_scene *scene)
 	exit(1);
 }
 
-int	is_valid_double(char *str)
+static int	is_valid_double(char *str)
 {
 	int	i;
 	int	dot_count;

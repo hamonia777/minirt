@@ -15,7 +15,7 @@
 #include "../minilibx-linux/mlx.h"
 #include <math.h>
 
-int	ft_abs(int n)
+static int	ft_abs(int n)
 {
 	if (n > 0)
 		return (n);

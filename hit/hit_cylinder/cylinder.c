@@ -15,7 +15,7 @@
 #include "../../header/vector.h"
 #include <math.h>
 
-t_bool	check_cylinder_root(t_root_check data)
+static t_bool	check_cylinder_root(t_root_check data)
 {
 	t_cylinder	*cy;
 	double		h;
@@ -39,8 +39,8 @@ t_bool	check_cylinder_root(t_root_check data)
 	return (TRUE);
 }
 
-void	calculate_quadratic_coeffs(t_cylinder *cy, t_ray *ray, t_vec oc,
-		t_coeff *coeff)
+static void	calculate_quadratic_coeffs(t_cylinder *cy, t_ray *ray, t_vec oc,
+				t_coeff *coeff)
 {
 	double	dot_dir_n;
 	double	dot_oc_n;
@@ -52,7 +52,7 @@ void	calculate_quadratic_coeffs(t_cylinder *cy, t_ray *ray, t_vec oc,
 	coeff->c = vlength2(oc) - pow(dot_oc_n, 2) - cy->radius2;
 }
 
-t_bool	try_both_roots(t_root_calc calc, double sqrtd)
+static t_bool	try_both_roots(t_root_calc calc, double sqrtd)
 {
 	t_root_check	data;
 	t_bool			hit_any;

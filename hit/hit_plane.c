@@ -13,7 +13,7 @@
 #include "../header/object.h"
 #include "../header/trace.h"
 
-double	ft_fabs(double n)
+static double	ft_fabs(double n)
 {
 	if (n > 0)
 		return (n);

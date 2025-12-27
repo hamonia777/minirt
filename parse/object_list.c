@@ -13,7 +13,7 @@
 #include "../header/object.h"
 #include <stdlib.h>
 
-t_color	decision_albedo(t_object *obj, t_object_type type)
+static t_color	decision_albedo(t_object *obj, t_object_type type)
 {
 	t_sphere	*sp;
 	t_plane		*pl;
@@ -54,7 +54,7 @@ t_object	*new_object(t_object_type type, void *elements)
 	return (obj);
 }
 
-t_object	*object_last(t_object *obj)
+static t_object	*object_last(t_object *obj)
 {
 	if (!obj)
 		return (NULL);

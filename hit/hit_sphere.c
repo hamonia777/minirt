@@ -29,7 +29,8 @@ typedef struct s_sphere_data
 	t_hit_record	*rec;
 }					t_sphere_data;
 
-void	calculate_sphere_coeffs(t_sphere *sp, t_ray *ray, t_sphere_coeff *coeff)
+static void	calculate_sphere_coeffs(t_sphere *sp, t_ray *ray,
+				t_sphere_coeff *coeff)
 {
 	t_vec	oc;
 
@@ -39,7 +40,7 @@ void	calculate_sphere_coeffs(t_sphere *sp, t_ray *ray, t_sphere_coeff *coeff)
 	coeff->c = vlength2(oc) - sp->radius2;
 }
 
-t_bool	check_sphere_root(t_sphere_data data, double root)
+static t_bool	check_sphere_root(t_sphere_data data, double root)
 {
 	t_sphere	*sp;
 	t_point		p;
@@ -56,7 +57,8 @@ t_bool	check_sphere_root(t_sphere_data data, double root)
 	return (TRUE);
 }
 
-t_bool	try_sphere_roots(t_sphere_data data, t_sphere_coeff coeff, double sqrtd)
+static t_bool	try_sphere_roots(t_sphere_data data, t_sphere_coeff coeff,
+				double sqrtd)
 {
 	double	root1;
 	double	root2;
