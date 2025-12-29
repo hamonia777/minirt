@@ -6,7 +6,7 @@
 /*   By: jinwpark <jinwpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/18 14:16:50 by jinwpark          #+#    #+#             */
-/*   Updated: 2025/12/29 17:14:03 by jinwpark         ###   ########.fr       */
+/*   Updated: 2025/12/29 20:09:17 by jinwpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -199,7 +199,7 @@ void						add_object(t_object **obj, t_object *new_obj);
 t_vec						parse_unit_vec(char *str, t_scene *scene);
 void						printf_error(char *msg, t_scene *scene);
 int							split_count(char **split);
-double	parse_double(char *str);
+double						parse_double(char *str);
 void						free_element(t_object *obj);
 void						free_object_list(t_object *obj);
 void						free_scene(t_scene *scene);

@@ -6,7 +6,7 @@
 /*   By: jinwpark <jinwpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 16:47:59 by jinwpark          #+#    #+#             */
-/*   Updated: 2025/12/29 19:05:56 by jinwpark         ###   ########.fr       */
+/*   Updated: 2025/12/29 20:08:23 by jinwpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ t_scene	*read_value(char **argv)
 	char	*str;
 	int		fd;
 
-	scene = scene_init();	
+	scene = scene_init();
 	fd = open_file(argv);
 	if (fd < 0)
 		printf_error("invalid file", scene);

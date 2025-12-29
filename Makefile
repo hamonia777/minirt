@@ -16,6 +16,10 @@ RM          = rm -f
 SRCS        = main.c \
 			  init.c \
 			  valid/valid_value.c \
+			  valid/valid_acl.c \
+			  valid/valid_util.c \
+			  valid/valid_object.c \
+			  valid/valid_vec.c \
 			  vector/vec_util1.c \
 			  vector/vec_util2.c \
 			  vector/vec_util3.c \
