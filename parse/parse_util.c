@@ -6,7 +6,7 @@
 /*   By: jinwpark <jinwpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 16:47:45 by jinwpark          #+#    #+#             */
-/*   Updated: 2025/12/21 02:28:50 by jinwpark         ###   ########.fr       */
+/*   Updated: 2025/12/29 17:14:28 by jinwpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,9 @@ t_vec	parse_vec(char *str, t_scene *scene)
 	split = ft_split(str, ',');
 	if (!split)
 		printf_error("malloc fail", scene);
-	if (split_count(split) != 3)
-	{
-		free_split(split);
-		printf_error("Error: Invalid vector format", scene);
-	}
-	vec.x = parse_double(split[0], scene);
-	vec.y = parse_double(split[1], scene);
-	vec.z = parse_double(split[2], scene);
+	vec.x = parse_double(split[0]);
+	vec.y = parse_double(split[1]);
+	vec.z = parse_double(split[2]);
 	free_split(split);
 	return (vec);
 }
@@ -55,14 +50,9 @@ t_color	parse_color(char *split, t_scene *scene)
 	color = ft_split(split, ',');
 	if (!color)
 		printf_error("malloc fail", scene);
-	if (split_count(color) != 3)
-	{
-		free_split(color);
-		printf_error("Error: Invalid color format", scene);
-	}
-	color_xyz.x = parse_double(color[0], scene);
-	color_xyz.y = parse_double(color[1], scene);
-	color_xyz.z = parse_double(color[2], scene);
+	color_xyz.x = parse_double(color[0]);
+	color_xyz.y = parse_double(color[1]);
+	color_xyz.z = parse_double(color[2]);
 	free_split(color);
 	return (color_xyz);
 }
@@ -75,18 +65,10 @@ t_vec	parse_unit_vec(char *str, t_scene *scene)
 	split = ft_split(str, ',');
 	if (!split)
 		printf_error("malloc fail", scene);
-	if (split_count(split) != 3)
-	{
-		free_split(split);
-		printf_error("Error: Invalid unit vector format", scene);
-	}
-	vec.x = parse_double(split[0], scene);
-	vec.y = parse_double(split[1], scene);
-	vec.z = parse_double(split[2], scene);
+	vec.x = parse_double(split[0]);
+	vec.y = parse_double(split[1]);
+	vec.z = parse_double(split[2]);
 	free_split(split);
-	if (vec.x < -1.0 || vec.x > 1.0 || vec.y < -1.0
-		|| vec.y > 1.0 || vec.z < -1.0 || vec.z > 1.0)
-		printf_error("Error: value out of range (-1.0 to 1.0)", scene);
 	return (vec);
 }
 

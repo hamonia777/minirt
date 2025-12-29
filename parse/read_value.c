@@ -3,35 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   read_value.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skang <skang@student.42gyeongsan.kr>       +#+  +:+       +#+        */
+/*   By: jinwpark <jinwpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 16:47:59 by jinwpark          #+#    #+#             */
-/*   Updated: 2025/12/22 17:05:58 by skang            ###   ########.fr       */
+/*   Updated: 2025/12/29 19:05:56 by jinwpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/object.h"
 #include "../readline/cm_readline.h"
 #include <unistd.h>
-
-static void	check_duplicate(t_scene *scene, char **split)
-{
-	if (ft_strncmp(split[0], "A", 1) == 0 && scene->amb_count >= 1)
-	{
-		free_split(split);
-		printf_error("too many elements", scene);
-	}
-	if (ft_strncmp(split[0], "C", 1) == 0 && scene->cam_count >= 1)
-	{
-		free_split(split);
-		printf_error("too many elements", scene);
-	}
-	if (ft_strncmp(split[0], "L", 1) == 0 && scene->light_count >= 1)
-	{
-		free_split(split);
-		printf_error("too many elements", scene);
-	}
-}
 
 static void	parse_element(t_scene *scene, char **split)
 {
@@ -63,20 +44,9 @@ static t_scene	*object_parsing(t_scene *scene, char *str)
 	split = ft_split(str, ' ');
 	if (!split)
 		printf_error("malloc fail", scene);
-	check_duplicate(scene, split);
 	parse_element(scene, split);
 	free_split(split);
 	return (scene);
-}
-
-static void	process_line(t_scene **scene, char *str)
-{
-	if (check_object(str))
-	{
-		free(str);
-		printf_error("invalid value", *scene);
-	}
-	*scene = object_parsing(*scene, str);
 }
 
 t_scene	*read_value(char **argv)
@@ -85,14 +55,14 @@ t_scene	*read_value(char **argv)
 	char	*str;
 	int		fd;
 
-	scene = scene_init();
+	scene = scene_init();	
 	fd = open_file(argv);
 	if (fd < 0)
 		printf_error("invalid file", scene);
 	str = cm_readline(fd);
 	while (str)
 	{
-		process_line(&scene, str);
+		scene = object_parsing(scene, str);
 		free(str);
 		str = cm_readline(fd);
 	}

@@ -6,13 +6,14 @@
 /*   By: jinwpark <jinwpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 17:34:09 by jinwpark          #+#    #+#             */
-/*   Updated: 2025/12/21 01:22:16 by jinwpark         ###   ########.fr       */
+/*   Updated: 2025/12/29 19:08:11 by jinwpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header/event.h"
 #include "header/minirt.h"
 #include "header/trace.h"
+#include "header/valid.h"
 #include "minilibx-linux/mlx.h"
 #include <math.h>
 #include <stdio.h>
@@ -60,11 +61,29 @@ void	render_scene(t_vars *vars)
 	mlx_put_image_to_window(vars->mlx, vars->win, vars->image.img, 0, 0);
 }
 
+void free_vars(t_vars *vars)
+{
+    if (vars->image.img)
+        mlx_destroy_image(vars->mlx, vars->image.img);
+    if (vars->win)
+        mlx_destroy_window(vars->mlx, vars->win);
+    if (vars->mlx)
+    {
+        mlx_destroy_display(vars->mlx); 
+        free(vars->mlx);
+    }
+}
+
 int	main(int argc, char **argv)
 {
 	t_vars	vars;
 
 	vars = vars_init();
+	if (valid_value(argv) == 1)
+	{
+		free_vars(&vars);
+		return (1);
+	}	
 	if (argc == 2 && ft_strlen(argv[1]) > 3)
 		vars.scene = read_value(argv);
 	else

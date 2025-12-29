@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_util.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skang <skang@student.42gyeongsan.kr>       +#+  +:+       +#+        */
+/*   By: jinwpark <jinwpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 02:24:33 by jinwpark          #+#    #+#             */
-/*   Updated: 2025/12/22 17:05:29 by skang            ###   ########.fr       */
+/*   Updated: 2025/12/29 17:00:30 by jinwpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,27 +44,4 @@ int	open_file(char **argv)
 			".rt", 3) == 0)
 		fd = open(argv[1], O_RDONLY);
 	return (fd);
-}
-
-int	check_object(char *str)
-{
-	while (ft_isspace(*str))
-		str++;
-	if (*str == '\0' || *str == '\n')
-		return (0);
-	if (ft_strncmp(str, "A", 1) == 0 && ft_isspace(str[1]))
-		return (0);
-	else if (ft_strncmp(str, "C", 1) == 0 && ft_isspace(str[1]))
-		return (0);
-	else if (ft_strncmp(str, "L", 1) == 0 && ft_isspace(str[1]))
-		return (0);
-	else if (ft_strncmp(str, "sp", 2) == 0 && ft_isspace(str[2]))
-		return (0);
-	else if (ft_strncmp(str, "pl", 2) == 0 && ft_isspace(str[2]))
-		return (0);
-	else if (ft_strncmp(str, "cy", 2) == 0 && ft_isspace(str[2]))
-		return (0);
-	else
-		return (1);
-	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skang <skang@student.42gyeongsan.kr>       +#+  +:+       +#+        */
+/*   By: jinwpark <jinwpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 16:47:13 by jinwpark          #+#    #+#             */
-/*   Updated: 2025/12/24 12:39:04 by skang            ###   ########.fr       */
+/*   Updated: 2025/12/29 17:09:40 by jinwpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,7 @@ t_ambient	parse_ambient(char **split, t_scene *scene)
 {
 	t_ambient	ambient;
 
-	if (split_count(split) != 3)
-	{
-		free_split(split);
-		printf_error("Missing data in AMBIENT\n", scene);
-	}
-	ambient.ambient = parse_double(split[1], scene);
+	ambient.ambient = parse_double(split[1]);
 	ambient.color = vdivide(parse_color(split[2], scene), 255.0);
 	scene->amb_count++;
 	return (ambient);
@@ -60,14 +55,9 @@ t_camera	parse_camera(char **split, t_scene *scene)
 	t_camera	camera;
 	t_vec		vup;
 
-	if (split_count(split) != 4)
-	{
-		free_split(split);
-		printf_error("Missing data in CAMERA\n", scene);
-	}
 	camera.orig = parse_vec(split[1], scene);
 	camera.dir = vunit(parse_unit_vec(split[2], scene));
-	camera.fov = parse_double(split[3], scene);
+	camera.fov = parse_double(split[3]);
 	camera.viewport_h = 2.0 * tan((camera.fov * M_PI / 180.0) / 2.0);
 	camera.viewport_w = camera.viewport_h * (ASPECT_W / ASPECT_H);
 	camera.focal_len = 1.0;
@@ -81,13 +71,8 @@ t_light	parse_light(char **split, t_scene *scene)
 {
 	t_light	light;
 
-	if (split_count(split) != 4)
-	{
-		free_split(split);
-		printf_error("Missing data in LIGHT\n", scene);
-	}
 	light.orig = parse_vec(split[1], scene);
-	light.brightness = parse_double(split[2], scene);
+	light.brightness = parse_double(split[2]);
 	light.color = vdivide(parse_color(split[3], scene), 255.0);
 	scene->light_count++;
 	return (light);
