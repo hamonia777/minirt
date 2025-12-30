@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cap.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skang <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: skang <skang@student.42gyeongsan.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/18 15:53:42 by skang             #+#    #+#             */
-/*   Updated: 2025/12/18 15:53:43 by skang            ###   ########.fr       */
+/*   Updated: 2025/12/30 15:13:13 by skang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,6 @@
 #include "../../header/trace.h"
 #include "../../header/vector.h"
 #include <math.h>
-
-typedef struct s_cap_data
-{
-	t_vec	center;
-	t_vec	normal;
-}			t_cap_data;
 
 // 교점이 뚜껑 원판 안에 있는지 확인
 static t_bool	is_point_on_cap(t_cylinder *cy, t_point p, t_vec center)
@@ -32,7 +26,7 @@ static t_bool	is_point_on_cap(t_cylinder *cy, t_point p, t_vec center)
 
 // 광선과 평면의 교점 거리 계산
 static double	calculate_cap_intersection(t_ray *ray, t_vec center,
-					t_vec normal)
+		t_vec normal)
 {
 	double	denom;
 	double	t;
@@ -45,7 +39,7 @@ static double	calculate_cap_intersection(t_ray *ray, t_vec center,
 }
 
 static t_bool	hit_cap(t_object *cy_obj, t_ray *ray, t_hit_record *rec,
-					t_cap_data cap)
+		t_cap_data cap)
 {
 	t_cylinder	*cy;
 	double		t;

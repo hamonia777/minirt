@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   object.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jinwpark <jinwpark@student.42.fr>          +#+  +:+       +#+        */
+/*   By: skang <skang@student.42gyeongsan.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/18 14:16:50 by jinwpark          #+#    #+#             */
-/*   Updated: 2025/12/29 20:09:17 by jinwpark         ###   ########.fr       */
+/*   Updated: 2025/12/30 15:13:04 by skang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -182,6 +182,26 @@ typedef struct s_light_components
 	t_color					diffuse;
 	t_color					specular;
 }							t_light_components;
+
+typedef struct s_sphere_coeff
+{
+	double					a;
+	double					half_b;
+	double					c;
+}							t_sphere_coeff;
+
+typedef struct s_sphere_data
+{
+	t_object				*sp_obj;
+	t_ray					*ray;
+	t_hit_record			*rec;
+}							t_sphere_data;
+
+typedef struct s_cap_data
+{
+	t_vec					center;
+	t_vec					normal;
+}							t_cap_data;
 
 t_vec						parse_vec(char *str, t_scene *scene);
 t_color						parse_color(char *split, t_scene *scene);

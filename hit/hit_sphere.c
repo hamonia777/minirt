@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hit_sphere.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skang <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: skang <skang@student.42gyeongsan.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/18 15:53:09 by skang             #+#    #+#             */
-/*   Updated: 2025/12/18 15:53:23 by skang            ###   ########.fr       */
+/*   Updated: 2025/12/30 15:12:35 by skang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,22 +15,8 @@
 #include "../header/vector.h"
 #include <math.h>
 
-typedef struct s_sphere_coeff
-{
-	double			a;
-	double			half_b;
-	double			c;
-}					t_sphere_coeff;
-
-typedef struct s_sphere_data
-{
-	t_object		*sp_obj;
-	t_ray			*ray;
-	t_hit_record	*rec;
-}					t_sphere_data;
-
 static void	calculate_sphere_coeffs(t_sphere *sp, t_ray *ray,
-				t_sphere_coeff *coeff)
+		t_sphere_coeff *coeff)
 {
 	t_vec	oc;
 
@@ -58,7 +44,7 @@ static t_bool	check_sphere_root(t_sphere_data data, double root)
 }
 
 static t_bool	try_sphere_roots(t_sphere_data data, t_sphere_coeff coeff,
-				double sqrtd)
+		double sqrtd)
 {
 	double	root1;
 	double	root2;
