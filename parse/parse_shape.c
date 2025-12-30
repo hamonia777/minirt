@@ -6,7 +6,7 @@
 /*   By: jinwpark <jinwpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 17:27:58 by jinwpark          #+#    #+#             */
-/*   Updated: 2025/12/29 17:09:15 by jinwpark         ###   ########.fr       */
+/*   Updated: 2025/12/30 14:55:08 by jinwpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,10 +58,10 @@ t_cylinder	*parse_cylinder(char **split, t_scene *scene)
 		printf_error("malloc fail", scene);
 	}
 	cylinder->center = parse_vec(split[1], scene);
-	cylinder->n = parse_unit_vec(split[2], scene);
+	cylinder->n = vunit(parse_unit_vec(split[2], scene));
 	cylinder->diameter = parse_double(split[3]);
 	cylinder->radius = cylinder->diameter / 2;
-	cylinder->radius2 = cylinder->diameter * cylinder->diameter;
+	cylinder->radius2 = cylinder->radius * cylinder->radius;
 	cylinder->height = parse_double(split[4]);
 	cylinder->color = parse_color(split[5], scene);
 	return (cylinder);
