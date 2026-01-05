@@ -6,7 +6,7 @@
 /*   By: jinwpark <jinwpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 16:27:04 by jinwpark          #+#    #+#             */
-/*   Updated: 2025/12/30 20:00:02 by jinwpark         ###   ########.fr       */
+/*   Updated: 2026/01/05 17:26:10 by jinwpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,10 @@ t_camera	move_camera(t_camera camera, double forward, double right,
 	t_vec	u;
 	t_vec	v;
 
-	vup = vec3(0, 1, 0);
+	if (camera.dir.y == 1.0 || camera.dir.y == -1.0)
+		vup = vec3(0, 0, 1);
+	else
+		vup = vec3(0, 1, 0);
 	w = vunit(vmult(camera.dir, -1));
 	u = vunit(vcross(vup, w));
 	v = vcross(w, u);
