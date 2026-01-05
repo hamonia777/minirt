@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jinwpark <jinwpark@student.42.fr>          +#+  +:+       +#+        */
+/*   By: skang <skang@student.42gyeongsan.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 17:34:09 by jinwpark          #+#    #+#             */
-/*   Updated: 2025/12/29 20:08:44 by jinwpark         ###   ########.fr       */
+/*   Updated: 2026/01/05 22:07:47 by skang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,8 @@ int	main(int argc, char **argv)
 {
 	t_vars	vars;
 
+	if (argc == 1)
+		return (1);
 	vars = vars_init();
 	if (valid_value(argv) == 1)
 	{
