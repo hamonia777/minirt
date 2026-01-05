@@ -6,7 +6,7 @@
 /*   By: skang <skang@student.42gyeongsan.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/18 15:53:42 by skang             #+#    #+#             */
-/*   Updated: 2025/12/30 15:13:13 by skang            ###   ########.fr       */
+/*   Updated: 2026/01/05 16:54:07 by skang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 #include "../../header/vector.h"
 #include <math.h>
 
-// 교점이 뚜껑 원판 안에 있는지 확인
 static t_bool	is_point_on_cap(t_cylinder *cy, t_point p, t_vec center)
 {
 	t_vec	cp;
@@ -24,7 +23,6 @@ static t_bool	is_point_on_cap(t_cylinder *cy, t_point p, t_vec center)
 	return (vlength2(cp) <= cy->radius2);
 }
 
-// 광선과 평면의 교점 거리 계산
 static double	calculate_cap_intersection(t_ray *ray, t_vec center,
 		t_vec normal)
 {
@@ -60,7 +58,6 @@ static t_bool	hit_cap(t_object *cy_obj, t_ray *ray, t_hit_record *rec,
 	return (TRUE);
 }
 
-// 실린더 뚜껑 충돌 체크
 t_bool	hit_cylinder_caps(t_object *cy_obj, t_ray *ray, t_hit_record *rec)
 {
 	t_cylinder	*cy;
